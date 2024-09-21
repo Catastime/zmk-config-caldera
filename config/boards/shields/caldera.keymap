@@ -3,6 +3,47 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    macros {
+        AE: AE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RALT>
+                , <&macro_tap &kp Q>
+                , <&macro_release &kp RALT>
+                ;
+        };
+        OE: OE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RALT>
+                , <&macro_tap &kp P>
+                , <&macro_release &kp RALT>
+                ;
+        };
+        UE: UE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RALT>
+                , <&macro_tap &kp Y>
+                , <&macro_release &kp RALT>
+                ;
+        };
+        SZ: SZ {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RALT>
+                , <&macro_tap &kp S>
+                , <&macro_release &kp RALT>
+                ;
+        };
+    };
+};
+
+/ {
         keymap {
                 compatible = "zmk,keymap";
 
@@ -24,13 +65,13 @@
                 lower_layer {
 // ------------------------------------------------------------------------------------------------------------
 // |       |  BT1  |  BT2  |  BT3  |  BT4  |  BT5  |          |       |       |       |       |       | BTCLR |
-// |       |       |       |       |       |       |          |       |       |       |       |       |       |
-// |       |       |       | LPAR  | RPAR  |       |          |       | LBKT  | RBKT  |       |       |       |
+// |       |       |       |       |       |       |          |   Ü   |       |   Ö   |       |       |       |
+// |       |   Ä   |   ß   | LPAR  | RPAR  |       |          |       | LBKT  | RBKT  |       |       |       |
 // |       |       |       |       |       |       |          |       |       |       |       |       |       |
                         bindings = <
    &trans    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4           &trans    &trans    &trans   &trans   &trans  &bt BT_CLR
-   &trans    &trans         &trans         &trans         &trans         &trans                 &trans    &trans    &trans   &trans   &trans  &trans
-   &trans    &trans         &trans         &kp LPAR       &kp RPAR       &trans                 &trans    &kp LBKT  &kp RBKT &kp MINUS   &kp EQUAL  &trans
+   &trans    &trans         &trans         &trans         &trans         &trans                 &trans    &UE       &trans   &OE      &trans  &trans
+   &trans    &AE            &SZ            &kp LPAR       &kp RPAR       &trans                 &trans    &kp LBKT  &kp RBKT &kp MINUS   &kp EQUAL  &trans
    &trans    &trans         &trans         &trans         &trans         &trans                 &trans    &trans    &trans   &trans   &trans  &trans
                         >;
                 };
